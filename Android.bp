@@ -1,6 +1,7 @@
 cc_library_static {
     name: "libhevcdec",
     vendor_available: true,
+    host_supported: true,
 
     cflags: [
         "-D_LIB",
@@ -400,6 +401,7 @@ cc_library_static {
 
 cc_test {
     name: "hevcdec",
+    host_supported: true,
     cflags: [
         "-DPROFILE_ENABLE",
         "-DARM",
@@ -759,10 +761,6 @@ cc_library_static {
         misc_undefined: ["bounds"],
         // Enable CFI if this becomes a shared library.
         // cfi: true,
-        diag: {
-            integer_overflow: true,
-            misc_undefined: ["bounds"],
-        },
         blacklist: "libhevc_blacklist.txt",
     },
 }
@@ -780,9 +778,5 @@ cc_test {
     sanitize: {
         integer_overflow: true,
         misc_undefined: ["bounds"],
-        diag: {
-            integer_overflow: true,
-            misc_undefined: ["bounds"],
-        },
     },
 }
